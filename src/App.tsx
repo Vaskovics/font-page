@@ -14,6 +14,7 @@ function App() {
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.default);
   const [personToEdit, setPersonToEdit] = useState<Person | null>(null);
   const [newName, setNewName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (sortBy === SortBy.name) {
@@ -38,6 +39,7 @@ function App() {
   }, [sortBy]);
 
   useEffect(() => {
+    setIsLoading(true);
     getPeople()
       .then((data) => {
         setPeople(data);
@@ -45,6 +47,9 @@ function App() {
       })
       .catch((error) => {
         setError('Something went wrong');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -107,24 +112,34 @@ function App() {
 
   }
 
+  const handleCancel = () => {
+    setPersonToEdit(null);
+    setNewName('');
+  }
+
   console.log(filteredPeople);
   return (
     <div className="App">
-      <h1>Hello</h1>
-      <FilterBar
-        onSearch={handleSearch}
-        onSortByName={hanleSortByName}
-        onSortByAge={handleSortByAge}
-        onReset={handleReset}
-      />
-      <PeopleList 
-        people={filteredPeople}
-        onDelete={handleOnDelete}
-        onEdit={handleEditName}
-        nameToEdit={personToEdit}
-        onChangeInputName={handleInputNewName}
-        onEnter={handleEnter}
-      />
+      <h1>Page Font</h1>
+      {isLoading ? 'Is loading...' : (
+        <>
+          <FilterBar
+            onSearch={handleSearch}
+            onSortByName={hanleSortByName}
+            onSortByAge={handleSortByAge}
+            onReset={handleReset}
+          />
+          <PeopleList 
+            people={filteredPeople}
+            onDelete={handleOnDelete}
+            onEdit={handleEditName}
+            nameToEdit={personToEdit}
+            onChangeInputName={handleInputNewName}
+            onEnter={handleEnter}
+            onCancel={handleCancel}
+          />
+        </>
+      )}
     </div>
   );
 }

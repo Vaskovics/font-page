@@ -7,7 +7,7 @@ function wait(delay: number) {
 }
 
 export function getPeople(): Promise<Person[]> {
-  return wait(500)
+  return wait(1000)
     .then(() => fetch(API_URL))
     .then(response => response.json());
 }

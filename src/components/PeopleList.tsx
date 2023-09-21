@@ -8,6 +8,7 @@ type Props = {
   nameToEdit: Person | null;
   onChangeInputName: (event: React.ChangeEvent<HTMLInputElement>) => void,
   onEnter: (event: React.KeyboardEvent<HTMLInputElement>) => void,
+  onCancel: () => void,
 };
 
 const PeopleList: React.FC<Props> = ({ 
@@ -17,6 +18,7 @@ const PeopleList: React.FC<Props> = ({
   nameToEdit,
   onChangeInputName,
   onEnter,
+  onCancel
 }) => {
   console.log(people);
 
@@ -26,12 +28,15 @@ const PeopleList: React.FC<Props> = ({
       {people.map((person) => (
         <li key={person.slug} >
           {nameToEdit && nameToEdit.slug === person.slug ? (
-            <input
-              type="text"
-              defaultValue={nameToEdit.name}
-              onChange={onChangeInputName}
-              onKeyDown={onEnter}
-            />
+            <>
+              <input
+                type="text"
+                defaultValue={nameToEdit.name}
+                onChange={onChangeInputName}
+                onKeyDown={onEnter}
+              />
+            <button onClick={() => onCancel()}>Cancel</button>
+            </>
           ) : (
             <>
               {person.name} - {person.born}{' '}
