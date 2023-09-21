@@ -34,7 +34,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
 
       <button onClick={() => onSortByName()}>Sort by name</button>
 
-      <button onClick={() => onSortByAge()}>Sort by age</button>
+      <button onClick={() => onSortByAge()}>Sort by birth</button>
     </div>
   );
 };

@@ -25,7 +25,7 @@ function App() {
       );
     }
 
-    if (sortBy === SortBy.age) {
+    if (sortBy === SortBy.birth) {
       setFilteredPeople((prevPeople) =>
         [...prevPeople].sort((person1, person2) =>
           person1.born - person2.born,
@@ -72,7 +72,7 @@ function App() {
   }
 
   const handleSortByAge = () => {
-    setSortBy(SortBy.age);
+    setSortBy(SortBy.birth);
   }
 
   const handleReset = () => {

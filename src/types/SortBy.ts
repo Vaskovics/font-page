@@ -1,5 +1,5 @@
 export enum SortBy {
   default = 'default',
   name = 'name',
-  age = 'age'
+  birth = 'birt'
 };
