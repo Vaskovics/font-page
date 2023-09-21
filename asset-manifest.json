@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/font-page/static/css/main.abd64e84.css",
+    "main.js": "/font-page/static/js/main.1c8d722e.js",
+    "index.html": "/font-page/index.html",
+    "main.abd64e84.css.map": "/font-page/static/css/main.abd64e84.css.map",
+    "main.1c8d722e.js.map": "/font-page/static/js/main.1c8d722e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abd64e84.css",
+    "static/js/main.1c8d722e.js"
+  ]
+}
